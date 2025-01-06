@@ -1,11 +1,15 @@
 export const prerender = false;
 
 export async function HEAD() {
-  return new Response(
-    JSON.stringify({
-      message: "This was a HEAD!",
-    })
-  );
+  return new Response(null, {
+    status: 200,
+    headers: {
+      "Content-Type": "text/xml; charset=utf-8",
+      "Cache-Control": "public, max-age=0, must-revalidate",
+      "Access-Control-Allow-Methods": "HEAD, GET",
+      "Access-Control-Allow-Origin": "*", // CORS
+    },
+  });
 }
 
 export async function ALL() {
